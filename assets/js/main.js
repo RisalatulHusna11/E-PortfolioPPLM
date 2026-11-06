@@ -1,1 +1,16 @@
-document.querySelector('.tg').onclick=function(){document.querySelector('.nl').classList.toggle('o')}
+(function(){var d=document,$=function(s,r){return(r||d).querySelector(s)},$$=function(s,r){return[].slice.call((r||d).querySelectorAll(s))},red=matchMedia('(prefers-color-scheme: dark)'),rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+var tg=$('.tg');if(tg)tg.onclick=function(){$('.nl').classList.toggle('o')};
+$$('[data-k]').forEach(function(a){var u=(window.LINKS||{})[a.dataset.k];if(u){a.href=u;a.target='_blank';a.rel='noopener'}});
+var th;try{th=localStorage.getItem('th')}catch(e){}if(!th)th=red.matches?'dark':'light';
+function setT(t){d.documentElement.setAttribute('data-theme',t);try{localStorage.setItem('th',t)}catch(e){}}
+setT(th);var ni=$('.ni');if(ni){var b=d.createElement('button');b.className='tm';b.setAttribute('aria-label','Ganti tema terang atau gelap');b.textContent='\u25D0';b.onclick=function(){setT(d.documentElement.getAttribute('data-theme')=='dark'?'light':'dark')};ni.insertBefore(b,tg)}
+$$('.tabs').forEach(function(t){var bs=$$('.tl button',t),ps=$$('.tp',t);function s(i){bs.forEach(function(x,j){x.setAttribute('aria-selected',i==j);ps[j].hidden=i!=j})}bs.forEach(function(x,i){x.onclick=function(){s(i)}});s(0)});
+$$('.fp').forEach(function(x){x.onclick=function(){x.classList.toggle('on');x.setAttribute('aria-pressed',x.classList.contains('on'))}});
+var pr=d.createElement('div');pr.className='prog';d.body.appendChild(pr);function sc(){var h=d.documentElement,m=h.scrollHeight-h.clientHeight;pr.style.width=(m>0?h.scrollTop/m*100:0)+'%';up.classList.toggle('v',h.scrollTop>600)}
+var up=d.createElement('button');up.className='up';up.setAttribute('aria-label','Kembali ke atas');up.textContent='\u2191';up.onclick=function(){scrollTo({top:0,behavior:rm?'auto':'smooth'})};d.body.appendChild(up);addEventListener('scroll',sc,{passive:true});sc();
+var hs=$$('.ar > h2');if(hs.length>3){var tc=d.createElement('div');tc.className='toc';var tb=d.createElement('button');tb.textContent='Daftar isi';tb.setAttribute('aria-expanded','false');var nv=d.createElement('nav');hs.forEach(function(h,i){h.id=h.id||'b'+i;var a=d.createElement('a');a.href='#'+h.id;a.textContent=h.textContent;a.onclick=function(){nv.classList.remove('o');tb.setAttribute('aria-expanded','false')};nv.appendChild(a)});
+if($$('details').length){var oa=d.createElement('button');oa.className='oa';oa.textContent='Buka semua kajian teori';oa.onclick=function(){var o=$$('details').some(function(x){return!x.open});$$('details').forEach(function(x){x.open=o});oa.textContent=o?'Tutup semua kajian teori':'Buka semua kajian teori'};nv.appendChild(oa)}
+tb.onclick=function(){var o=nv.classList.toggle('o');tb.setAttribute('aria-expanded',o)};tc.appendChild(tb);tc.appendChild(nv);d.body.appendChild(tc);
+if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){$$('a',nv).forEach(function(a){a.classList.toggle('on',a.getAttribute('href')=='#'+e.target.id)})}})},{rootMargin:'-20% 0px -70% 0px'});hs.forEach(function(h){io.observe(h)})}}
+$$('[data-n]').forEach(function(e){var n=+e.dataset.n;if(rm||!('IntersectionObserver' in window)){e.textContent=n;return}e.textContent=0;new IntersectionObserver(function(es,o){if(es[0].isIntersecting){o.disconnect();var t0=performance.now();(function f(t){var p=Math.min((t-t0)/900,1);e.textContent=Math.round(n*p);if(p<1)requestAnimationFrame(f)})(t0)}}).observe(e)});
+})();
