@@ -33,3 +33,4 @@ section{padding:36px 0}.pf dl{display:grid;grid-template-columns:150px 1fr;gap:8
 footer{background:var(--p);color:#e9efe9;padding:28px 0;margin-top:40px;font-size:.9rem}footer a{color:#fff}
 .fi{display:flex;flex-wrap:wrap;gap:12px 32px;justify-content:space-between}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
